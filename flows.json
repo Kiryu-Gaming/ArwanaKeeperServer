@@ -1,0 +1,498 @@
+[
+    {
+        "id": "8de430c5156d5bd9",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "078b68229e696f28",
+        "type": "mqtt-broker",
+        "name": "Arwana",
+        "broker": "4e65392c242f4478832d8079a299f4b9.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": "70",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4a18fc9245d13cec",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "4e65392c242f4478832d8079a299f4b9.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "96d4769ed16a8713",
+        "type": "firebase-config",
+        "name": "My Database",
+        "authType": "privateKey",
+        "claims": {},
+        "createUser": false,
+        "status": {
+            "firestore": false,
+            "storage": false
+        },
+        "useClaims": false
+    },
+    {
+        "id": "569758e634103c09",
+        "type": "mqtt in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/sensor",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "4a18fc9245d13cec",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "15e586615b6bdb02",
+                "211c64632694fc28"
+            ]
+        ]
+    },
+    {
+        "id": "15e586615b6bdb02",
+        "type": "debug",
+        "z": "8de430c5156d5bd9",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 540,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "6bf106c2f63a2349",
+        "type": "firebase-out",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "database": "96d4769ed16a8713",
+        "path": "topic",
+        "pathType": "msg",
+        "priority": "1",
+        "queryType": "update",
+        "x": 720,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "211c64632694fc28",
+        "type": "json",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "6bf106c2f63a2349"
+            ]
+        ]
+    },
+    {
+        "id": "b20692a3abea246e",
+        "type": "mqtt in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/control",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "4a18fc9245d13cec",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 340,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6475ddbbcf4d7b9a",
+        "type": "debug",
+        "z": "8de430c5156d5bd9",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 630,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "8e134bc45803adb4",
+        "type": "firebase-out",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "database": "96d4769ed16a8713",
+        "path": "topic",
+        "pathType": "msg",
+        "priority": "1",
+        "queryType": "update",
+        "x": 880,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "6884a567f701c7fc",
+        "type": "json",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 570,
+        "y": 500,
+        "wires": [
+            [
+                "dc9561e44f753aa9",
+                "6475ddbbcf4d7b9a"
+            ]
+        ]
+    },
+    {
+        "id": "a6ad7eb39dbd2f95",
+        "type": "mqtt in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/status",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "4a18fc9245d13cec",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 310,
+        "y": 640,
+        "wires": [
+            [
+                "578f36a6cd6094c7",
+                "d73836b6b3744056"
+            ]
+        ]
+    },
+    {
+        "id": "578f36a6cd6094c7",
+        "type": "debug",
+        "z": "8de430c5156d5bd9",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 540,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "ce47dc8d751621be",
+        "type": "firebase-out",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "database": "96d4769ed16a8713",
+        "path": "topic",
+        "pathType": "msg",
+        "priority": "1",
+        "queryType": "update",
+        "x": 720,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "d73836b6b3744056",
+        "type": "json",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 550,
+        "y": 680,
+        "wires": [
+            [
+                "ce47dc8d751621be"
+            ]
+        ]
+    },
+    {
+        "id": "53fb40b5c1d458ea",
+        "type": "firebase-in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "constraints": {},
+        "database": "96d4769ed16a8713",
+        "inputs": 0,
+        "listenerType": "value",
+        "outputType": "auto",
+        "passThrough": false,
+        "path": "arwana/control",
+        "pathType": "str",
+        "useConstraints": false,
+        "x": 340,
+        "y": 380,
+        "wires": [
+            [
+                "6884a567f701c7fc"
+            ]
+        ]
+    },
+    {
+        "id": "dc9561e44f753aa9",
+        "type": "mqtt out",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/control",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4a18fc9245d13cec",
+        "x": 800,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "83ce25265a4836f2",
+        "type": "mqtt in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/connection",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4a18fc9245d13cec",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "b3f190242ff14626",
+                "eb6a6aaf2c461c53"
+            ]
+        ]
+    },
+    {
+        "id": "b3f190242ff14626",
+        "type": "debug",
+        "z": "8de430c5156d5bd9",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 520,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "9acd91c0d90db55e",
+        "type": "firebase-out",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "database": "96d4769ed16a8713",
+        "path": "topic",
+        "pathType": "msg",
+        "priority": "1",
+        "queryType": "update",
+        "x": 700,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "eb6a6aaf2c461c53",
+        "type": "function",
+        "z": "8de430c5156d5bd9",
+        "name": "function 1",
+        "func": "msg.payload = {\n    connection: msg.payload\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "9acd91c0d90db55e"
+            ]
+        ]
+    },
+    {
+        "id": "21f4b8f667929708",
+        "type": "mqtt in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/control",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "4a18fc9245d13cec",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 360,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6ba4994098c180bd",
+        "type": "debug",
+        "z": "8de430c5156d5bd9",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 650,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "780dcec40ec89fc6",
+        "type": "json",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 590,
+        "y": 880,
+        "wires": [
+            [
+                "94e04f45117eeee3",
+                "6ba4994098c180bd"
+            ]
+        ]
+    },
+    {
+        "id": "da2ee2e78779c568",
+        "type": "firebase-in",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "constraints": {},
+        "database": "96d4769ed16a8713",
+        "inputs": 0,
+        "listenerType": "value",
+        "outputType": "auto",
+        "passThrough": false,
+        "path": "arwana/control_para",
+        "pathType": "str",
+        "useConstraints": false,
+        "x": 370,
+        "y": 760,
+        "wires": [
+            [
+                "780dcec40ec89fc6"
+            ]
+        ]
+    },
+    {
+        "id": "94e04f45117eeee3",
+        "type": "mqtt out",
+        "z": "8de430c5156d5bd9",
+        "name": "",
+        "topic": "arwana/control_para",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4a18fc9245d13cec",
+        "x": 840,
+        "y": 800,
+        "wires": []
+    }
+]
